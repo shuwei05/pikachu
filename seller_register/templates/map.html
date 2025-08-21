@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Seller Register Page</title>
+
+    <!--Link to LeaftLet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!--Map CSS-->
+    <style>
+        body,html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            margin-top: 80px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .body{
+            margin: 0;
+            padding:0;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        .navbar{
+            position: fixed;
+            top:0 ;
+            left: 0;
+            height: 80px;
+            width: 100%;
+            background: rgb(164, 231, 250);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            z-index: 999;
+        }
+
+        .logo{
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo img{
+            height: 85px;
+            transform: translateX(-50px);
+        }
+
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static',filename='logo.png') }}" alt="mmu logo">
+            </div> 
+        </div>
+    </nav>
+    <div id="map"></div>
+</body>
+
+<!--Map JavaScript-->
+<script>
+    const map = L.map("map");
+    map.setView([2.92836,101.64188],16);
+
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 20, //Setting Max Zoom to 20(Enough)
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map)
+
+    const coordinates = {{ (coordinates | tojson | safe) }};
+
+    for (const[latitude,longitude] of coordinates){
+        L.marker([latitude,longitude]).addTo(map);
+    }
+
+    //L.icon({}) if any customize marker
+
+</script>
+
+</html>

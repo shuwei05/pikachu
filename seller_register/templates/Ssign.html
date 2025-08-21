@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller sign up page</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style2.css') }}">
+    <script src="https://kit.fontawesome.com/fc6d546fde.js" crossorigin="anonymous"></script>
+    <!--Link to LeaftLet-->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <!--CSS-->
+    <style>
+        #map {
+            width: 600px;
+            height: 350px;
+        }
+    </style>
+
+</head>
+<body>
+    <nav>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{{ url_for('static',filename='logo.png') }}" alt="mmu logo">
+            </div> 
+        </div>
+    </nav>  
+
+    <section class="staffb">
+        <h1>
+            Register your stall<br>
+            <span class="highlight">with us!</span>
+        </h1>
+        <p>Sign up easily,showcase your menu and you can<br>
+            reaching new customers.
+        </p>
+    </section>
+
+    <div class="middle">
+        <h1>Ready to boost your sales?</h1>
+        
+        <form class="form-box" method="POST">
+            <div class="text">
+                <input type="text" placeholder="Stall name" required>
+                <input type="text" placeholder="Stall Owner name" required>
+                <input type="text" placeholder="Email" required>
+                <input type="text" placeholder="Password" required>
+                <input type="text" placeholder="Comfirm Password" required>
+                <input type="text" placeholder="Operating hours" required>
+
+                <textarea placeholder="Stall Description" required></textarea>
+            </div>
+
+            <div class="image-upload">
+
+                <div class="image-box">
+                    <p class="upload-title">Stall Image:</p>
+                    <label class="upload-area">
+                        <i class="fa-solid fa-image"></i>
+                        <input type="file" id="stall-upload" accept="image/*">
+                    </label>
+                </div>
+
+                <div class="image-box">
+                    <p class="upload-title">Background Image:</p>
+                    <label class="upload-area">
+                        <i class="fa-solid fa-image"></i>
+                        <input type="file" id="bg-upload" accept="image/*"> 
+                    </label>
+                </div>
+            </div>
+
+            <div class="map-section">
+                <p class="map-title">📍 Pin Your Location Here:</p>
+            </div>
+
+            <div id="map"></div>
+            {{ seller_register_form.hidden_tag() }} <!--CSRF Token,prevent hacker-->
+            {{ seller_register_form.latitude(id="latitude") }}
+            {{ seller_register_form.longitude(id="longitude") }}
+
+            <div class="form-actions">
+                <button type="submit" class="submit-btn">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+
+    <section class="staffb2">
+
+    </section>
+
+    <script>
+        // 预览上传的图片
+        function previewImage(input, previewId) {
+            const file = input.files[0];// 获取用户选择的第一个文件
+            if (file) {
+                // 把这个文件转换成一个临时的 URL，然后设置到 img 的 src 上
+                document.getElementById(previewId).src = URL.createObjectURL(file);
+            }
+        }
+        // 当用户上传 stall image 时，触发预览
+        document.getElementById("stall-upload").addEventListener("change", function() {
+            previewImage(this, "stall-preview");
+        });
+        // 当用户上传 background image 时，触发预览
+        document.getElementById("bg-upload").addEventListener("change", function() {
+            previewImage(this, "bg-preview");
+        });
+    </script>
+
+    <!--Map JavaScript-->
+    <script>
+        const map = L.map("map");
+        map.setView([2.92836,101.64188],16);
+
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 20, //Setting Max Zoom to 20(Enough)
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map)
+
+        const marker = L.marker([2.927599,101.641655],{
+            draggable: true
+        }).addTo(map);
+
+        function position() {
+            const GetPosition = marker.getLatLng();
+            document.getElementById("latitude").value = GetPosition.lat
+            document.getElementById("longitude").value = GetPosition.lng
+            console.log(GetPosition.lat,GetPosition.lng)
+        }
+            
+        marker.on("dragend",position);
+        position()
+
+
+        document.getElementById("initial").addEventListener("click",function() {
+            map.setView([2.92836,101.64188],16)})
+    </script>
+</body>
+</html>
