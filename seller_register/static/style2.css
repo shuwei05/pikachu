@@ -77,7 +77,7 @@
 
 .middle{
     width: 60%;
-    height: 1500px;
+    height: 1700px;
     background: rgb(255, 255, 255,0.8);
     margin: -330px auto;
     display: flex;
@@ -96,10 +96,10 @@
     font-size: 3.5rem;
     line-height: 1.2;
     letter-spacing: 2px;
-    margin-bottom: 1380px;
+    margin-bottom: 1520px;
     white-space: nowrap;
     text-align: center;
-    transform: translateX(100px);
+    transform: translateX(220px);
     
 }
 
@@ -112,7 +112,7 @@
     text-align: center;
     position: relative;
     z-index: 5;
-    margin-bottom: 100px;
+    margin-bottom: -200px;
     
 }
 
@@ -201,7 +201,7 @@
     justify-content: flex-end; /* 靠右 */
     margin-top: 20px;
     margin-right: 40px; /* 和右边保持点距离 */
-    transform: translateY(300px);
+    transform: translateY(50px);
 }
 
 .submit-btn {
@@ -217,4 +217,10 @@
 
 .submit-btn:hover {
     background-color: #0030f2; /* hover 变深 */
+}
+
+@media screen and (max-width:780px) {
+form {
+    font-size: 3.204vw;
+}
 }
