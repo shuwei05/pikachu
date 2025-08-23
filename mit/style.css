@@ -159,6 +159,12 @@
     }
 }
 
+@keyframes floatLeftRight {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
 .menu-text{
     flex: 1;
     animation:slideInRight 1s ease-out forwards; 
@@ -169,6 +175,8 @@
     font-size: 70px;
     font-weight: bold;
     line-height: 1.2;
+    opacity:0;
+    animation: fadeUp 1.5s forwards;
 }
 
 .welcome {
