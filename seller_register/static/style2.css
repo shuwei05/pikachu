@@ -219,7 +219,7 @@
     justify-content: flex-end; /* 靠右 */
     margin-top: 20px;
     margin-right: 40px; /* 和右边保持点距离 */
-    transform: translateY(20px);
+    transform: translateY(10px);
 }
 
 .submit-btn {
