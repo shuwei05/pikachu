@@ -237,3 +237,11 @@
     background-color: #0030f2; /* hover 变深 */
 }
 
+<<<<<<< HEAD
+=======
+@media screen and (max-width:780px) {
+form {
+    font-size: 3.204vw;
+}
+}
+>>>>>>> dc7a8dfaad4d3a5ef419ec345a48315f511456bc
