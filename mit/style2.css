@@ -77,7 +77,7 @@
 
 .middle{
     width: 60%;
-    height: 1500px;
+    height: 1600px;
     background: rgb(255, 255, 255,0.8);
     margin: -330px auto;
     display: flex;
@@ -99,7 +99,7 @@
     margin-bottom: 1380px;
     white-space: nowrap;
     text-align: center;
-    transform: translateX(100px);
+    transform: translateX(150px);
     
 }
 
@@ -126,6 +126,15 @@
     outline: none;
     transition: 0.3 ease;
     display: block; /*each rows each box*/
+}
+
+.operating-hours {
+    display: flex;
+    gap: 10px; /* 两个格子中间的间距，可以改大或改小 */
+}
+
+.operating-hours input {
+    flex: 1; /* 让两个输入框平分宽度 */
 }
 
 .form-box .text textarea{
