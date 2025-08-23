@@ -16,7 +16,7 @@
         #map {
             width: 600px;
             height: 350px;
-            transform: translateY(30px);
+            transform: translateY(10px);
         }
     </style>
 
@@ -50,7 +50,11 @@
                 <input type="text" placeholder="Email" required>
                 <input type="text" placeholder="Password" required>
                 <input type="text" placeholder="Comfirm Password" required>
-                <input type="text" placeholder="Operating hours" required>
+                
+                <div class="operating-hours">
+                    <input type="text" placeholder="Open Hours" required>
+                    <input type="text" placeholder="Close Hours" required>
+                </div>
 
                 <textarea placeholder="Stall Description" required></textarea>
             </div>
@@ -63,6 +67,7 @@
                         <i class="fa-solid fa-image"></i>
                         <input type="file" id="stall-upload" accept="image/*">
                     </label>
+                    <p id="stall-filename" class="filename-text"></p>
                 </div>
 
                 <div class="image-box">
@@ -70,7 +75,9 @@
                     <label class="upload-area">
                         <i class="fa-solid fa-image"></i>
                         <input type="file" id="bg-upload" accept="image/*"> 
+                        
                     </label>
+                    <p id="bg-filename" class="filename-text"></p>
                 </div>
             </div>
 
@@ -91,29 +98,30 @@
 
     <section class="staffb2">
 
-    </section>
+    </section>  
 
     <script>
-        // 预览上传的图片
-        function previewImage(input, previewId) {
-            const file = input.files[0];// 获取用户选择的第一个文件
-            if (file) {
-                // 把这个文件转换成一个临时的 URL，然后设置到 img 的 src 上
-                document.getElementById(previewId).src = URL.createObjectURL(file);
-            }
-        }
-        // 当用户上传 stall image 时，触发预览
-        document.getElementById("stall-upload").addEventListener("change", function() {
-            previewImage(this, "stall-preview");
-        });
-        // 当用户上传 background image 时，触发预览
-        document.getElementById("bg-upload").addEventListener("change", function() {
-            previewImage(this, "bg-preview");
-        });
-    </script>
+        function showFileName(input, targetId) {
+    const file = input.files[0];
+    if (file) {
+        document.getElementById(targetId).textContent = "Selected: " + file.name;
+    } else {
+        document.getElementById(targetId).textContent = "";
+    }
+}
+
+document.getElementById("stall-upload").addEventListener("change", function() {
+    showFileName(this, "stall-filename");
+});
+
+document.getElementById("bg-upload").addEventListener("change", function() {
+    showFileName(this, "bg-filename");
+});
+
+    
 
     <!--Map JavaScript-->
-    <script>
+    
         const map = L.map("map");
         map.setView([2.92836,101.64188],16);
 
@@ -142,3 +150,6 @@
     </script>
 </body>
 </html>
+
+
+

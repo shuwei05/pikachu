@@ -96,7 +96,7 @@
     font-size: 3.5rem;
     line-height: 1.2;
     letter-spacing: 2px;
-    margin-bottom: 1520px;
+    margin-bottom: 1580px;
     white-space: nowrap;
     text-align: center;
     transform: translateX(220px);
@@ -128,6 +128,15 @@
     display: block; /*each rows each box*/
 }
 
+.operating-hours {
+    display: flex;
+    gap: 10px; /* 两个格子中间的间距，可以改大或改小 */
+}
+
+.operating-hours input {
+    flex: 1; /* 让两个输入框平分宽度 */
+}
+
 .form-box .text textarea{
     width: 95%;
     height: 150px;
@@ -154,6 +163,13 @@
     text-align: center;
 }
 
+.filename-text {
+    font-size: 14px;
+    color: #555;
+    margin-top: 5px;
+    font-style: italic;
+}
+
 .upload-title {
     font-weight: bold;
     margin-bottom: 12px;
@@ -167,6 +183,7 @@
     font-size: 90px;
 }
 
+
 .upload-area img {
     width: 100%;
     height: 200px;
@@ -176,6 +193,7 @@
     background: #f9f9f9;
     transition: border-color 0.3s;
 }
+
 
 .upload-area:hover img {
     border-color: #4CAF50;
@@ -201,7 +219,7 @@
     justify-content: flex-end; /* 靠右 */
     margin-top: 20px;
     margin-right: 40px; /* 和右边保持点距离 */
-    transform: translateY(50px);
+    transform: translateY(20px);
 }
 
 .submit-btn {
@@ -219,8 +237,3 @@
     background-color: #0030f2; /* hover 变深 */
 }
 
-@media  and (max-width:780px) {
-form {
-    font-size 3.204vw;
-}
-}
