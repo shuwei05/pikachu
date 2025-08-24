@@ -46,17 +46,17 @@ form {
 /*Container 1*/
 .container-1 {
     position: relative;
-    padding-top: 65px;
+    padding-top: 75px;
 }
 
 .home-icon {
     position: absolute;
-    padding-top: 13px;
+    padding-top: 18px;
+    padding-left: 18px;
 }
 
 .container-1 i {
     font-size: 40px;
-    margin-left: 10px;
 }
 
 .container-1 h1 {
@@ -64,6 +64,7 @@ form {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-top: 8px;
 }
 /*Container 2 and 3*/
 .container-2 {
@@ -132,6 +133,11 @@ form {
     width: 600px;
 }
 
+.checkbox {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
 /*container 5*/
 .container-5 {
     margin-top: 40px;
@@ -175,14 +181,19 @@ form {
     font-size: 26px;
 }
 
-.checkbox {
-    display: flex;
-    flex-direction: row-reverse;
+.container-7 button:active {
+    background-color: #0066b5;
 }
+
 
 @media screen and (max-width: 780px) {
 form {
     font-size: 3.204vw; 
+}
+
+.home-icon {
+    padding-top: 2.308vw;
+    padding-left: 2.308vw;
 }
 
 .container {
@@ -192,11 +203,11 @@ form {
 
 .container-1 i {
     font-size: 5.128vw;
-    margin-left: 1.282vw;
 }
 
 .container-1 h1 {
     font-size: 5.128vw;
+    padding-top: 1.026vw;
 }
 
 .product-name {
