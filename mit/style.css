@@ -159,12 +159,6 @@
     }
 }
 
-@keyframes floatLeftRight {
-    0% { transform: translateX(0); }
-    50% { transform: translateX(-10px); }
-    100% { transform: translateX(0); }
-}
-
 .menu-text{
     flex: 1;
     animation:slideInRight 1s ease-out forwards; 
@@ -175,8 +169,6 @@
     font-size: 70px;
     font-weight: bold;
     line-height: 1.2;
-    opacity:0;
-    animation: fadeUp 1.5s forwards;
 }
 
 .welcome {
@@ -246,11 +238,18 @@
     height: 80px;
     padding: 3px 40px;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
     padding-right: 40px;
-    padding-bottom: 28px;
+    padding-bottom: 5px;
 }
+
+.last-section p{
+    margin: 0;
+    color: #333;
+    
+}
+
 
 .last-section a{
     font-size: 18px;
