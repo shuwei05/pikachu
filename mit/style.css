@@ -159,6 +159,13 @@
     }
 }
 
+@keyframes floatLeftRight {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-10px); }
+    100% { transform: translateX(0); }
+}
+
+
 .menu-text{
     flex: 1;
     animation:slideInRight 1s ease-out forwards; 
